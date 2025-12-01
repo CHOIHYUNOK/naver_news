@@ -1,0 +1,26 @@
+[app]
+# 앱 제목과 패키지 이름
+title = NaverNews
+package.name = navernews
+package.domain = org.test
+
+# 소스 코드 위치 (현재 폴더)
+source.dir = .
+source.include_exts = py,png,jpg,kv,atlas
+
+# 버전
+version = 0.1
+
+# 필수 라이브러리 (중요!)
+requirements = python3,kivy==2.2.1,kivymd==1.1.1,requests,urllib3,chardet,idna,certifi,openssl
+
+# 안드로이드 설정
+orientation = portrait
+fullscreen = 0
+android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
+android.api = 31
+android.minapi = 21
+
+# P4A (Python for Android) 설정
+p4a.branch = master
+p4a.bootstrap = sdl2
