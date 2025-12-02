@@ -30,7 +30,5 @@ android.ndk = 25b
 android.api = 33
 android.minapi = 21
 
-# [중요] 최신 빌드 스크립트 사용
-p4a.branch = master
 
 
