@@ -25,4 +25,3 @@ android.minapi = 21
 p4a.branch = master
 p4a.bootstrap = sdl2
 android.accept_sdk_license = True
-
