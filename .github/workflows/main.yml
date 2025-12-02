@@ -46,7 +46,8 @@ jobs:
 
       # 5. 빌드 실행 (약관 동의 자동 처리)
       - name: Build APK
-        run: yes | buildozer android debug
+        run: |
+          yes | buildozer -v android debug
 
       # 6. 결과 파일 업로드
       - name: Upload artifacts
