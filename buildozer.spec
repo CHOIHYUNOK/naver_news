@@ -3,7 +3,7 @@ title = NaverNews
 package.name = navernews
 package.domain = org.test
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,ttf
+source.include_exts = py,png,jpg,kv,atlas,ttf,json
 version = 0.1
 
 # [핵심] openssl 제거, pillow 추가
@@ -25,3 +25,4 @@ log_level = 2
 
 # [핵심] 도커(Root)에서 실행할 때 에러가 나지 않도록 강제 허용
 warn_on_root = 0
+
