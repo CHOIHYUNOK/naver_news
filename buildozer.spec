@@ -12,7 +12,7 @@ source.include_exts = py,png,jpg,kv,atlas,ttf
 version = 0.1
 
 # 필수 라이브러리 (중요!)
-requirements = python3,kivy==2.2.1,kivymd==1.1.1,sdl2_ttf==2.0.15,pillow,requests,urllib3,chardet,idna,certifi,openssl
+requirements = python3,kivy==2.2.1,kivymd==1.1.1,pillow,requests,urllib3,chardet,idna,certifi
 
 # 안드로이드 설정
 orientation = portrait
@@ -25,3 +25,4 @@ android.minapi = 21
 p4a.branch = master
 p4a.bootstrap = sdl2
 android.accept_sdk_license = True
+
