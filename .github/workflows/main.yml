@@ -11,26 +11,26 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # 1. 찌꺼기 파일 제거 (혹시 모를 오류 방지)
+      # 1. 찌꺼기 파일 청소
       - name: Clean previous builds
         run: rm -rf .buildozer bin
 
-      # 2. 도커(Docker)를 이용한 빌드
-      # Kivy 팀이 만든 공식 이미지를 사용하여 환경 오류를 원천 차단합니다.
+      # 2. 도커를 이용한 빌드
       - name: Build APK with Docker
         uses: docker://kivy/buildozer:latest
         with:
-          args: buildozer android debug
+          # [수정됨] 앞에 'buildozer' 단어를 빼고 'android debug'만 적습니다.
+          args: android debug
         env:
-          # 여기서도 한 번 더 경고 무시 설정
+          # 루트 권한 경고 무시 (필수)
           BUILDOZER_WARN_ON_ROOT: 0
 
-      # 3. 파일 권한 수정 (도커가 만든 파일은 잠겨있어서 풀어줘야 함)
+      # 3. 파일 권한 수정
       - name: Fix Permissions
         run: |
           sudo chown -R $USER:$USER bin
 
-      # 4. 결과 파일 업로드
+      # 4. 결과 업로드
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
