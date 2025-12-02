@@ -24,3 +24,4 @@ android.minapi = 21
 # P4A (Python for Android) 설정
 p4a.branch = master
 p4a.bootstrap = sdl2
+android.accept_sdk_license = True
