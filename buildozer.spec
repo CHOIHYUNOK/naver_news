@@ -25,5 +25,12 @@ android.minapi = 21
 p4a.branch = master
 p4a.bootstrap = sdl2
 android.accept_sdk_license = True
+# [중요] NDK 버전을 25b로 고정 (Kivy 2.2.1과 호환되는 유일한 버전)
+android.ndk = 25b
+android.api = 33
+android.minapi = 21
+
+# [중요] 최신 빌드 스크립트 사용
+p4a.branch = master
 
 
