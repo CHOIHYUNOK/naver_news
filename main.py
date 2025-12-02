@@ -201,4 +201,5 @@ class NaverNewsApp(MDApp):
             toast(f"저장 실패: {e}")
 
 if __name__ == "__main__":
-    NaverNewsApp().run()
+
+    NaverNewsApp().run() 
