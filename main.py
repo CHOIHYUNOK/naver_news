@@ -40,16 +40,16 @@ try:
     class NaverNewsApp(MDApp):
         def build(self):
             # 폰트 등록 시도 (여기서 파일 없으면 에러남)
-            try:
-                LabelBase.register(name="NanumGothic", fn_regular="NanumGothic.ttf")
-                LabelBase.register(name="Roboto", fn_regular="NanumGothic.ttf")
-                LabelBase.register(name="RobotoBold", fn_regular="NanumGothic.ttf")
-                LabelBase.register(name="RobotoThin", fn_regular="NanumGothic.ttf")
-                LabelBase.register(name="RobotoMedium", fn_regular="NanumGothic.ttf")
-            except Exception as e:
-                print(f"폰트 로딩 실패: {e}")
-                # 폰트가 없으면 기본 폰트로라도 실행되게 넘어감 (하지만 한글은 깨짐)
-                pass
+            # try:
+            #     LabelBase.register(name="NanumGothic", fn_regular="NanumGothic.ttf")
+            #     LabelBase.register(name="Roboto", fn_regular="NanumGothic.ttf")
+            #     LabelBase.register(name="RobotoBold", fn_regular="NanumGothic.ttf")
+            #     LabelBase.register(name="RobotoThin", fn_regular="NanumGothic.ttf")
+            #     LabelBase.register(name="RobotoMedium", fn_regular="NanumGothic.ttf")
+            # except Exception as e:
+            #     print(f"폰트 로딩 실패: {e}")
+            #     # 폰트가 없으면 기본 폰트로라도 실행되게 넘어감 (하지만 한글은 깨짐)
+            #     pass
 
             self.theme_cls.primary_palette = "Blue"
             self.theme_cls.theme_style = "Light"
