@@ -29,6 +29,13 @@ try:
 
     if platform != 'android':
         Window.size = (360, 640)
+        try:
+            from android.permissions import request_permissions, Permission
+            from android.storage import primary_external_storage_path # download_csv 함수에 필요
+        except ImportError:
+        # 개발 PC에서는 이 모듈이 없으므로 무시
+            Permission = None
+            pass
 
     class NaverNewsApp(MDApp):
         def build(self):
@@ -80,6 +87,29 @@ try:
             
             screen.add_widget(layout)
             return screen
+        
+        def on_start(self):
+            super().on_start()
+        # 앱 시작 후 안드로이드일 경우 권한 요청
+            if platform == 'android':
+                self._request_android_permissions()
+
+        def _request_android_permissions(self):
+        # WRITE_EXTERNAL_STORAGE 권한을 요청합니다.
+        # CSV 저장을 위해 외부 저장소 쓰기 권한이 필요합니다.
+            permissions_needed = [Permission.WRITE_EXTERNAL_STORAGE]
+        
+        # 권한 요청 팝업을 띄우고, 결과는 _on_permission_request_result 함수로 받습니다.
+            request_permissions(permissions_needed, self._on_permission_request_result)
+
+        def _on_permission_request_result(self, permissions, results):
+        # 권한 요청 결과 처리 함수
+        # results는 딕셔너리 형태: {Permission.WRITE_EXTERNAL_STORAGE: True/False}
+            if results[Permission.WRITE_EXTERNAL_STORAGE]:
+                toast("저장소 권한이 승인되었습니다.")
+            else:
+            # 권한이 거부되면 CSV 저장 불가 안내
+                toast("저장소 권한이 거부되어 일부 기능(CSV 저장) 사용에 제한이 있습니다.")
 
         # ... (기존 함수들 그대로 유지) ...
         def clean_text(self, text):
@@ -153,7 +183,6 @@ try:
                 toast("데이터가 없습니다.")
                 return
             if platform == 'android':
-                from android.storage import primary_external_storage_path
                 dir_path = primary_external_storage_path() + '/Download'
             else:
                 dir_path = os.getcwd()
